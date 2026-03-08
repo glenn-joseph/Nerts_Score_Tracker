@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nerts Score Tracker</title>
+  <meta name="description" content="Track scores for the Nerts card game. Add players, set a winning score, and keep track of every round.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <!-- ============ SETUP SCREEN ============ -->
+  <div id="setup-screen" class="screen active">
+    <div class="container">
+      <header class="app-header">
+        <div class="logo">
+          <span class="logo-icon">🏆</span>
+          <h1>Nerts Score Tracker</h1>
+        </div>
+        <p class="subtitle">Track every round. Crown the winner.</p>
+      </header>
+
+      <section class="card setup-card">
+        <h2 class="card-title">Players</h2>
+
+        <div class="input-row">
+          <input
+            type="text"
+            id="player-name-input"
+            class="text-input"
+            placeholder="Player name"
+            maxlength="20"
+            autocomplete="off"
+          />
+          <button id="add-player-btn" class="btn btn-primary">Add Player</button>
+        </div>
+
+        <ul id="player-list" class="player-list"></ul>
+
+        <p id="player-hint" class="hint">Add at least 2 players to start.</p>
+      </section>
+
+      <section class="card setup-card">
+        <h2 class="card-title">Winning Score</h2>
+
+        <div class="input-row score-row">
+          <input
+            type="number"
+            id="winning-score-input"
+            class="text-input score-input"
+            placeholder="e.g. 100"
+            min="1"
+          />
+        </div>
+
+        <p class="hint">The game ends when a player reaches this score.</p>
+      </section>
+
+      <button id="start-game-btn" class="btn btn-start" disabled>Start Game</button>
+      
+      <footer class="app-footer">
+        <p>Made by Glenn Joseph</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ============ GAME SCREEN ============ -->
+  <div id="game-screen" class="screen">
+    <div class="container">
+      <header class="app-header">
+        <div class="logo">
+          <span class="logo-icon">🏆</span>
+          <h1>Nerts Score Tracker</h1>
+        </div>
+        <p class="subtitle" id="game-target-hint"></p>
+      </header>
+
+      <section id="standings-section" class="card standings-card" style="display:none;">
+        <h2 class="card-title">Standings</h2>
+        <div id="standings-list" class="standings-list"></div>
+      </section>
+
+      <section class="card round-card">
+        <h2 class="card-title" id="round-title">Round 1</h2>
+        <p class="hint round-hint">Enter each player's score for this round.</p>
+
+        <div id="round-score-list" class="round-score-list"></div>
+
+        <div class="round-btn-row">
+          <button id="undo-round-btn" class="btn btn-undo" style="display:none;">↩ Undo Round</button>
+          <button id="submit-round-btn" class="btn btn-start">Submit Round</button>
+        </div>
+      </section>
+
+      <section id="scoreboard-section" class="card scoreboard-card" style="display:none;">
+        <h2 class="card-title">Scoreboard</h2>
+        <div class="scoreboard-scroll">
+          <table id="scoreboard-table" class="scoreboard-table">
+            <thead id="scoreboard-thead"></thead>
+            <tbody id="scoreboard-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <p>Made by Glenn Joseph</p>
+      </footer>
+    </div>
+  </div>
+  <!-- ============ WINNER OVERLAY ============ -->
+  <div id="winner-overlay" class="winner-overlay" style="display:none;">
+    <div id="confetti-container" class="confetti-container"></div>
+    <div class="winner-modal">
+      <div class="winner-trophy">🏆</div>
+      <h2 class="winner-title">Congratulations!</h2>
+      <p class="winner-name" id="winner-name"></p>
+      <p class="winner-sub">has won the game!</p>
+
+      <div id="final-scores-list" class="final-scores-list"></div>
+
+      <div class="winner-btn-row">
+        <button id="restart-game-btn" class="btn btn-start winner-btn">Restart Game</button>
+        <button id="new-game-btn" class="btn btn-undo winner-btn-secondary">New Game</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
