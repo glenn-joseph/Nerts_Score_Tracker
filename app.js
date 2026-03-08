@@ -376,9 +376,16 @@ function showWinner(name) {
     score: state.scores[i]
   })).sort((a, b) => b.score - a.score);
 
-  finalScoresList.innerHTML = ranked.map(p => `
+  const getMedal = (index) => {
+    if (index === 0) return ' 🥇';
+    if (index === 1) return ' 🥈';
+    if (index === 2) return ' 🥉';
+    return '';
+  };
+
+  finalScoresList.innerHTML = ranked.map((p, index) => `
     <div class="final-score-row ${p.name === name ? 'winner-row' : ''}">
-      <span class="final-score-name">${escapeHtml(p.name)}</span>
+      <span class="final-score-name">${escapeHtml(p.name)}${getMedal(index)}</span>
       <span class="final-score-pts">${p.score} pts</span>
     </div>
   `).join('');
