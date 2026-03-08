@@ -174,7 +174,7 @@ body::before {
   height: 46px;
   padding: 0 16px;
   font-family: var(--font);
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text);
   background: var(--input-bg);
   border: 1.5px solid var(--input-border);
