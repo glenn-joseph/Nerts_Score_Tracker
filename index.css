@@ -565,7 +565,7 @@ body::before {
   text-transform: uppercase;
   letter-spacing: 0.8px;
   color: var(--text-muted);
-  background: rgba(0, 0, 0, 0.02);
+  background: rgba(255, 255, 255, 0.03);
   position: sticky;
   top: 0;
 }
@@ -575,7 +575,7 @@ body::before {
 }
 
 .scoreboard-table tbody tr:hover {
-  background: rgba(0, 0, 0, 0.03);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .scoreboard-table tbody tr:last-child td {
