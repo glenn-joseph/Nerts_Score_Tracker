@@ -140,8 +140,23 @@ function renderRoundInputs() {
         placeholder="0"
         step="1"
         inputmode="numeric"
+        pattern="[0-9]*"
       />
     `;
+    
+    const inputEl = row.querySelector('input');
+    inputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const nextInput = document.querySelector(`.round-score-input[data-player="${i + 1}"]`);
+        if (nextInput) {
+          nextInput.focus();
+        } else {
+          submitRoundBtn.click();
+        }
+      }
+    });
+
     roundScoreList.appendChild(row);
   });
 }
