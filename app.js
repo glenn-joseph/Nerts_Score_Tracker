@@ -139,8 +139,6 @@ function renderRoundInputs() {
         data-player="${i}"
         placeholder="0"
         step="1"
-        inputmode="numeric"
-        pattern="[0-9]*"
       />
     `;
     
